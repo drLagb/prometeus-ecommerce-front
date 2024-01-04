@@ -1,6 +1,11 @@
+import { config } from 'dotenv'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+
+config();
+
+let modoDesarrollo = process.env.DEVMODE == "true";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>{
+        (modoDesarrollo)?[children, <script src="axe.min.js"></script>, <script src="main.js"></script>]:children
+      }</body>
     </html>
   )
 }
