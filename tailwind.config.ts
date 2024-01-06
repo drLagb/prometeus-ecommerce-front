@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss'
-import animations from "tailwindcss-animate"
+import plugin from "tailwindcss-animate"
 
 const config: Config = {
   content: [
@@ -9,13 +9,25 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
+      colors:{
+        mainColor: "#415380",
+        secondaryColor: "#AEE5D1",
+        backgroundColor: "#F2F2F2",
+        altBAckgroundColor: "#E4E4E4",
+        verdeColor: "#59E756",
+        grisColor: "#8F8787",
+        rojoColor: "#940808"
+      }
     },
+    fontSize: {
+      "mv-icon-s": "4.6vw",
+      "mv-icon-m":"11.6vw",
+      "mv-icon-l": "17.4vw",
+      "pc-icon-s": "2.3vw",
+      "pc-icon-m": "4vw",
+      "pc-icon-l": "5.2vw"
+    }
   },
-  plugins: [animations],
+  plugins: [plugin],
 }
 export default config
