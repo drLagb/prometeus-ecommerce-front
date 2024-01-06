@@ -18,7 +18,7 @@ export default function ThunderIcon({className, sonsClassNames}:Props){
     const EXTRACLASSNAME = (className)?className:"";
     const EXTRA1 = (sonsClassNames.length > 1)?sonsClassNames[0]:"";
     return(
-    <div className={"bg-blue-200 " + 
+    <div className={""" " + 
         "relative w-20 h-20" 
         + " " + EXTRACLASSNAME}
         aria-label="oferta">

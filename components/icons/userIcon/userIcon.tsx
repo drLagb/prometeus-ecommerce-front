@@ -37,7 +37,7 @@ export default function UserIcon({className, sonsClassNames, link}:LinkProps){
     const EXTRACLASSNAME = (className)?className:"";
     const EXTRA1 = (sonsClassNames.length > 1)?sonsClassNames[0]:"";
     return(
-    <Link href={link} className={"bg-blue-200 " + 
+    <Link href={link} className={""" " + 
         "relative w-20 h-20" 
         + " " + EXTRACLASSNAME}
         aria-label="cuenta"
