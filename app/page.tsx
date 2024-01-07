@@ -1,11 +1,10 @@
-import LogoIcon from "@/components/icons/logoIcon/logoIcon"
-import ThunderIcon from "@/components/icons/thunderIcon/thunderIcon"
+import { UserButton } from "@clerk/nextjs";
 
 export default function Home() {
   return (
-  <>
-    <LogoIcon className="" sonsClassNames={[]}/>
-    <ThunderIcon className="" sonsClassNames={[]}/>
-  </>
-  )
+    <div className="bg-mainColor h-screen font-bold flex justify-center items-center gap-10">
+      Hola
+      <UserButton afterSignOutUrl="/" />
+    </div>
+  );
 }

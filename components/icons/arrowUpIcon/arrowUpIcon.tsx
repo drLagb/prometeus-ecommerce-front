@@ -18,7 +18,7 @@ export default function ArrowUpIcon({className, sonsClassNames}:Props){
     const EXTRACLASSNAME = (className)?className:"";
     const EXTRA1 = (sonsClassNames.length > 1)?sonsClassNames[0]:"";
     return(
-    <div className={""" " + 
+    <div className={" " + 
         "relative w-20 h-20" 
         + " " + EXTRACLASSNAME}
         aria-label="subio">
