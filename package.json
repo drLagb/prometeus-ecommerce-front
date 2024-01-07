@@ -11,6 +11,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.29.1",
     "dotenv": "^16.3.1",
     "next": "14.0.4",
     "normalize.css": "^8.0.1",

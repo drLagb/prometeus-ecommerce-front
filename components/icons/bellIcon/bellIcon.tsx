@@ -38,7 +38,7 @@ export default function BellIcon({className, sonsClassNames}:Props){
     const EXTRACLASSNAME = (className)?className:"";
     const EXTRA1 = (sonsClassNames.length > 1)?sonsClassNames[0]:"";
     return(
-    <div className={""" text-white text-center " + 
+    <div className={" text-white text-center " + 
         "relative w-20 h-20 "  +
         "after:animate-in after:zoom-in duration-1000 " +
         AFTER +
