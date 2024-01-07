@@ -1,11 +1,11 @@
-import LogoIcon from "@/components/icons/logoIcon/logoIcon"
-import ThunderIcon from "@/components/icons/thunderIcon/thunderIcon"
+import ArrowLeftIcon from "@/components/icons/arrowLeftIcon/arrowLeftIcon"
+import ArrowRightIcon from "@/components/icons/arrowRightIcon/arrowRightIcon"
 
 export default function Home() {
   return (
   <>
-    <LogoIcon className="" sonsClassNames={[]}/>
-    <ThunderIcon className="" sonsClassNames={[]}/>
+    <ArrowLeftIcon className="" sonsClassNames={[]}/>
+    <ArrowRightIcon className="" sonsClassNames={[]}/>
   </>
   )
 }
