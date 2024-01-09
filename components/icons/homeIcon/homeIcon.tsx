@@ -12,8 +12,8 @@ function desactivo(){
     console.log("enviando datos a la base de datos");
 }
 
-function IconAnimation({className}:any){
-    const {estado, activar} = useIcon(activo, desactivo);
+function IconAnimation({className, inicio}:any){
+    const {estado, activar} = useIcon(activo, desactivo, inicio);
     function handleClick(e:Event){
         e.preventDefault();
         activar();
@@ -33,16 +33,16 @@ function IconAnimation({className}:any){
     
 }
 
-export default function HomeIcon({className, sonsClassNames, link}:LinkProps){
+export default function HomeIcon({className, sonsClassNames, link, activo}:LinkProps){
     const EXTRACLASSNAME = (className)?className:"";
     const EXTRA1 = (sonsClassNames.length > 1)?sonsClassNames[0]:"";
     return(
-    <Link href={link} className={"" +
-        "relative w-20 h-20" 
+    <Link href={link} className={
+        "relative w-20 h-20 block" 
         + " " + EXTRACLASSNAME}
         aria-label="guardar"
         role="button">
-        <IconAnimation className={EXTRA1} />
+        <IconAnimation className={EXTRA1} inicio={activo}/>
     </Link>
     );
 }

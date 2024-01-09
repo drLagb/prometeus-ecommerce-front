@@ -1,11 +1,9 @@
-import ArrowLeftIcon from "@/components/icons/arrowLeftIcon/arrowLeftIcon"
-import ArrowRightIcon from "@/components/icons/arrowRightIcon/arrowRightIcon"
+import HomeIcon from "@/components/icons/homeIcon/homeIcon"
 
 export default function Home() {
   return (
   <>
-    <ArrowLeftIcon className="" sonsClassNames={[]}/>
-    <ArrowRightIcon className="" sonsClassNames={[]}/>
+    <HomeIcon className="" sonsClassNames={[]} activo={false} link="/"/>
   </>
   )
 }

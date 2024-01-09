@@ -48,7 +48,7 @@ export default function BookMarkIcon({className, sonsClassNames}:Props){
     const EXTRA1 = (sonsClassNames.length > 1)?sonsClassNames[0]:"";
     return(
     <div className={"" +
-        "relative w-20 h-20" 
+        "relative w-20 h-20 block" 
         + " " + EXTRACLASSNAME}
         aria-label="guardar"
         role="button">

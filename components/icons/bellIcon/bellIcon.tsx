@@ -1,15 +1,8 @@
 "use client"
 import { FaBell } from "react-icons/fa";
 import useIcon from "@/hooks/icon/useIcon";
-import { Props } from "../icon.dto";
-
-function activo(){
-    console.log("enviando datos a la base de datos");
-}
-
-function desactivo(){
-    console.log("enviando datos a la base de datos");
-}
+import { LinkProps } from "../icon.dto";
+import Link from "next/link";
 
 function IconAnimation({className, estado, activar}:any){
     function handleClick(e:Event){
@@ -30,22 +23,23 @@ function IconAnimation({className, estado, activar}:any){
     
 }
 
-export default function BellIcon({className, sonsClassNames}:Props){
-    const {estado, activar} = useIcon(activo, desactivo);
+export default function BellIcon({className, sonsClassNames, link, activo}:LinkProps){
+    let inicio:boolean = activo;
+    const {estado, activar} = useIcon(()=>{}, ()=>{}, inicio);
     let numeroNotificacion = 9;
     const AFTER = (!estado)?`after:content-['${numeroNotificacion}'] after:absolute after:w-10 after:h-6 after:bg-secondaryColor after:rounded-xl ` +
     "after:bg-center after:top-10 after:left-10 after:right-0 after:bottom-0 ":"";
     const EXTRACLASSNAME = (className)?className:"";
     const EXTRA1 = (sonsClassNames.length > 1)?sonsClassNames[0]:"";
     return(
-    <div className={" text-white text-center " + 
-        "relative w-20 h-20 "  +
+    <Link href={link} className={"text-white text-center " + 
+        "relative w-20 h-20 block "  +
         "after:animate-in after:zoom-in duration-1000 " +
         AFTER +
         + " " + EXTRACLASSNAME}
         aria-label="notificaciones"
         role="button">
         <IconAnimation className={EXTRA1} estado={estado} activar={activar}/>
-    </div>
+    </Link>
     );
 }

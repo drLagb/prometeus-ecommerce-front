@@ -4,5 +4,6 @@ export interface Props{
 }
 
 export interface LinkProps extends Props{
-    link:string
+    link:string,
+    activo:boolean
 }
