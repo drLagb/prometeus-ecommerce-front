@@ -71,7 +71,7 @@ const comentarios = [
 
 const CommentList = () => {
   return (
-    <div className="CommentList flex flex-wrap flex-col">
+    <div className="CommentList flex flex-wrap flex-col" role="list">
       {comentarios.map((comment) => {
         if (comment.commentText.length < 50) {
           return (

@@ -25,7 +25,7 @@ const CommentLong: React.FC<CommentLongProps> = ({
   const shortenedComment = commentText.slice(0, 50);
 
   return (
-    <div className={`flex flex-wrap p-4 gap-4`}>
+    <div className={`flex flex-wrap p-4 gap-4`} role="listitem">
       <div className="flex justify-center">
         <img
           src={`https://reqres.in/img/faces/${Number(userId)}-image.jpg`}
@@ -46,7 +46,7 @@ const CommentLong: React.FC<CommentLongProps> = ({
           &nbsp;&nbsp;
         </h3>
         <span
-          className="text-secondaryColor inline underline cursor-pointer"
+          className="text-mainColor inline underline cursor-pointer"
           onClick={() => setOpenComment(!openComment)}
         >
           {openComment === true ? "" : "abrir"}
