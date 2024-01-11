@@ -17,7 +17,7 @@ interface promp{
 export function ProductNotificationLoading(){
     return(
         <li className="list-none w-full md:w-pc-screen-mv h-mv-icon-l md:h-pc-icon-l bg-backgroundColor rounded-2xl" role="listitem">
-            <div className="w-full h-mv-icon-l md:h-pc-icon-l flex items-center" role="div">
+            <div className="w-full h-mv-icon-l md:h-pc-icon-l flex items-center">
                 <div className="flex basis-full" role="separator">
                     <div className="basis-1/6 flex justify-center items-center" role="separator">
                         <div className="rounded-full w-mv-icon-m h-mv-icon-m md:w-pc-icon-m md:h-pc-icon-m overflow-hidden bg-altBAckgroundColor animate-pulse duration-2000" role="none">
@@ -34,14 +34,14 @@ export function ProductNotificationLoading(){
 }
 
 export function ProductNotification({className, sonsClassName, productId, time}:promp){
-    const {getProduct} = useProduct(productId);
+    const {getProduct} = useProduct({productId});
     const {getImage} = useImage({producto:getProduct});
-    const {getHours, getMinutes, getSeconds} = usechronometer(time);
+    const {getHours, getMinutes} = usechronometer(time);
     const URL = useProductLink(getProduct);
     let hours = getHours();
     let minutes = getMinutes();
     return(
-        <li className="list-none w-full md:w-pc-screen-mv h-mv-icon-l md:h-pc-icon-l bg-backgroundColor rounded-2xl" role="listitem">
+        <li className={"list-none " + "w-full md:w-pc-screen-mv h-mv-icon-l md:h-pc-icon-l bg-backgroundColor rounded-2xl"} role="listitem">
             <Link href={URL} className="w-full h-mv-icon-l md:h-pc-icon-l flex items-center" role="link">
                 <div className="flex basis-full" role="separator">
                     <div className="basis-1/6 flex justify-center items-center" role="separator">

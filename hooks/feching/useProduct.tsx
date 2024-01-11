@@ -25,7 +25,7 @@ const baseDatos:Array<Product> = [
     }
 ]
 
-export default function useProduct(productId:number){
+export default function useProduct({productName, productId}:any){
     const [getProduct, setProduct] = useState(productId);
     const [getResult, setResult] = useState(baseDatos[0]);
     useEffect(()=>{
