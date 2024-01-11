@@ -16,7 +16,7 @@ const config: Config = {
         altBAckgroundColor: "#E4E4E4",
         verdeColor: "#59E756",
         grisColor: "#8F8787",
-        rojoColor: "#940808"
+        rojoColor: "#940808",
       }
     },
     fontSize: {
