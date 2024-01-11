@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { User } from "../all"
 
 interface secureUserInfo{
@@ -117,12 +117,50 @@ export function useAdminUser({id, email, cedula}:any){
     const [getData, setData] = useState(Users[0]);
     const [getInfo, setInfo] = useState({id, email, cedula});
     useEffect(()=>{
-        
+        let user = Users.findIndex((item)=>(
+            (item.cedula === cedula || !cedula) &&
+            (item.id === id || !id) &&
+            (item.email === email || !email)
+            )
+        );
+        setData(Users[user]);
     }, [getInfo]);
+    return{
+        getUser:getData,
+        setUser:setInfo
+    }
 }
 
-export function useUser(){
+export function useUser({id}:any){
     const [getData, setData] = useState(EXAMPLE);
+    const [getId, setId] = useState(id);
+    useEffect(()=>{
+        let user = Users.findIndex((item)=>item.id === id);
+        let secureInfo:secureUserInfo = {
+            id:Users[user].id,
+            nombre:Users[user].nombre
+        }
+        setData(secureInfo);
+    }, [getId]);
+    return{
+        getUser:getData,
+        setUser:setId
+    }
 }
 
-export function useVerifictionUser(){}
+export function useVerifictionUser({email, contraseña}:any){
+    const [getInfo, setInfo] = useState({email, contraseña});
+    const {getUser, setUser} = useAdminUser({email});
+    const resultado = useRef(false);
+    useEffect(()=>{
+        setUser(user =>{
+            user.email = email;
+            return user;
+        });
+        resultado.current = getUser === contraseña;
+    }, [getInfo]);
+    return {
+        getVerification:resultado.current,
+        setVerification:setInfo
+    }
+}
