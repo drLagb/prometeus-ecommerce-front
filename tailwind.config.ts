@@ -26,7 +26,24 @@ const config: Config = {
       "pc-icon-s": "2.3vw",
       "pc-icon-m": "4vw",
       "pc-icon-l": "5.2vw"
-    }
+    },
+    width: {
+      "mv-icon-s": "4.6vw",
+      "mv-icon-m":"11.6vw",
+      "mv-icon-l": "17.4vw",
+      "pc-icon-s": "2.3vw",
+      "pc-icon-m": "4vw",
+      "pc-icon-l": "5.2vw",
+      "pc-screen-mv": "33.6vw"
+    },
+    height: {
+      "mv-icon-s": "4.6vw",
+      "mv-icon-m":"11.6vw",
+      "mv-icon-l": "17.4vw",
+      "pc-icon-s": "2.3vw",
+      "pc-icon-m": "4vw",
+      "pc-icon-l": "5.2vw"
+    },
   },
   plugins: [plugin],
 }

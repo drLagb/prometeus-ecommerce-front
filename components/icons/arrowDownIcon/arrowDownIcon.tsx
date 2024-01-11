@@ -20,8 +20,7 @@ export default function ArrowDonwIcon({className, sonsClassNames}:Props){
     return(
     <div className={ 
         "relative w-20 h-20 block" 
-        + " " + EXTRACLASSNAME}
-        aria-label="bajo">
+        + " " + EXTRACLASSNAME}>
         <IconAnimation className={EXTRA1} />
     </div>
     );

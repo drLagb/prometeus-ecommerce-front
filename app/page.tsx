@@ -1,9 +1,15 @@
-import HomeIcon from "@/components/icons/homeIcon/homeIcon"
+import { ProductNotification, ProductNotificationLoading } from "@/components/notifications/productNotification"
 
 export default function Home() {
   return (
   <>
-    <HomeIcon className="" sonsClassNames={[]} activo={false} link="/"/>
+  <main>
+    <h1>el pepe</h1>
+    <ul>
+      <ProductNotificationLoading />
+      <ProductNotification className="" sonsClassName="" productId={0} time={60}/>
+    </ul>
+    </main>
   </>
   )
 }
