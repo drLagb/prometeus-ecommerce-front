@@ -14,8 +14,8 @@ export interface User {
   cedula: number;
   nombre: string;
   telefono: number;
-  email: string;
-  contraseña: correo;
+  email: correo;
+  contraseña: string;
 }
 
 export interface TypeImage {
