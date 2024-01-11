@@ -22,7 +22,7 @@ const CommentShort: React.FC<CommentShortProps> = ({
   commentText,
 }) => {
   return (
-    <div className="flex flex-wrap p-4 gap-4">
+    <div className="flex flex-wrap p-4 gap-4" role="listitem">
       <div className="flex justify-center">
         <img
           src={`https://reqres.in/img/faces/${Number(userId)}-image.jpg`}

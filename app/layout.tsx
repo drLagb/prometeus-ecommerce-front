@@ -1,6 +1,5 @@
 import { config } from "dotenv";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -22,6 +21,9 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body>
+          <header>
+            <h1>Prometeus</h1>
+          </header>
           {modoDesarrollo
             ? [
                 children,
