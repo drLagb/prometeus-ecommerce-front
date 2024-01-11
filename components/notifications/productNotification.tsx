@@ -1,6 +1,6 @@
 "use client";
 import { Product } from "@/hooks/all";
-import useImage from "@/hooks/feching/useImage";
+import {useImage} from "@/hooks/feching/useImage";
 import useProduct from "@/hooks/feching/useProduct";
 import useProductLink from "@/hooks/product/useProductLink";
 import Link from "next/link";
@@ -47,7 +47,7 @@ export function ProductNotification({
   time,
 }: promp) {
   const { getProduct } = useProduct({ productId });
-  const { getImage } = useImage({ producto: getProduct });
+  const { getImage } = useImage({ productoId: getProduct.id, tipo:0 });
   const { getHours, getMinutes } = usechronometer(time);
   const URL = useProductLink(getProduct);
   let hours = getHours();

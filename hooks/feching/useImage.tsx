@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { Image, Product, TypeImage, User } from "../all";
 
-interface promp {
-  usuario?: User;
-  producto?: Product;
+interface Promp {
+  usuarioId?: number;
+  productoId?: number;
+}
+
+interface ExtraPromp extends Promp{
+  tipo:number;
 }
 
 const tiposImagenes: Array<TypeImage> = [
@@ -67,20 +71,38 @@ const imagenes: Array<Image> = [
  * @description esta duncion hace una llamado a la api y recupera la imagen que le pides,
  * le puedes dar un usuario o un producto
  */
-export default function useImage(promp: promp) {
+export function useImage(promp: ExtraPromp) {
   const [getImage, setImage] = useState(promp);
   const [getResult, setResult] = useState(imagenes[0]);
   useEffect(() => {
     /*aca se haria el fecth*/
     let indice = imagenes.findIndex(
       (elemento) =>
-        elemento.producto === promp.producto?.id ||
-        elemento.usuario === promp.usuario?.id
+        (elemento.producto === promp.productoId ||
+        elemento.usuario === promp.usuarioId) && 
+        (elemento.tipo.id === promp.tipo || 
+        promp.tipo === -1)
     );
     setResult(imagenes[indice]);
   }, [getImage]);
   return {
     getImage: getResult,
     setImage,
+  };
+}
+
+
+
+export function useImages(promp:Promp){
+  const [getImages, setImages] = useState(promp);
+  const [getResult, setResult] = useState([imagenes[0]]);
+  useEffect(() => {
+    /*aca se haria el fecth*/
+    let imgs = imagenes.filter((img)=>(img.usuario === promp.usuarioId || img.producto === promp.productoId));
+    setResult(imgs);
+  }, [getImages]);
+  return {
+    getImages: getResult,
+    setImages,
   };
 }
