@@ -1,3 +1,5 @@
+"use client"
+import { useComments } from "@/hooks/feching/useCommets";
 import CommentLong from "../commentLong/commentLong";
 import CommentShort from "../commentShort/commentShort";
 
@@ -69,29 +71,15 @@ const comentarios = [
   },
 ];
 
-const CommentList = () => {
+const CommentList = ({productId}:any) => {
+  const {getComents} = useComments({productId});
   return (
     <div className="CommentList flex flex-wrap flex-col" role="list">
-      {comentarios.map((comment) => {
-        if (comment.commentText.length < 50) {
-          return (
-            <CommentShort
-              key={comment.userId}
-              userId={comment.userId}
-              userName={comment.userName}
-              commentText={comment.commentText}
-            />
-          );
-        } else {
-          return (
-            <CommentLong
-              key={comment.userId}
-              userId={comment.userId}
-              userName={comment.userName}
-              commentText={comment.commentText}
-            />
-          );
-        }
+      {getComents.map((item, index)=>{
+        let texto = item.commentText;
+        if(texto.length < 50)
+          return (<CommentShort key={index} userId={item.usuario} commentText={texto}/>);
+        return(<CommentLong key={index} userId={item.usuario} commentText={texto}/>);
       })}
     </div>
   );
