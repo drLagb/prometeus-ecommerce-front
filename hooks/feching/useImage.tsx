@@ -210,13 +210,22 @@ export function useImage(promp: ExtraPromp) {
 }
 
 
-
+/**
+ * 
+ * @param promp 
+ * @returns {getImages, setImages}
+ * @description esta es funcion que recopila todas las imagenes de un usuario o producto
+ */
 export function useImages(promp:Promp){
   const [getImages, setImages] = useState(promp);
   const [getResult, setResult] = useState([imagenes[0]]);
   useEffect(() => {
     /*aca se haria el fecth*/
-    let imgs = imagenes.filter((img)=>(img.usuario === promp.usuarioId || img.producto === promp.productoId));
+    let imgs:Array<Image> = [];
+    if(promp.usuarioId)
+      imgs = imagenes.filter((img)=>img.usuario === promp.usuarioId);
+    else
+      imgs = imagenes.filter((img)=>img.producto === promp.productoId);
     setResult(imgs);
   }, [getImages]);
   return {

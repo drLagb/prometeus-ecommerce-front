@@ -1,6 +1,7 @@
 "use client";
 import { useUser } from "@/hooks/feching/useUser";
 import { useImage } from "@/hooks/feching/useImage";
+import Image from "next/image";
 
 //<CommentShort
 //userId="1" // Reemplaza con el ID real del usuario
@@ -29,8 +30,9 @@ const CommentShort: React.FC<CommentShortProps> = ({
         <img
           src={getImage.URL}
           alt={`${getUser.nombre}'s avatar`}
-          className="rounded-full w-14 h-14"
-        ></img>
+          className="rounded-full w-14 h-14" 
+          loading="lazy" 
+        />
       </div>
       <section className="h-full w-3/4">
         <h2 className="text-mainColor inline">{`${getUser.nombre}: `}&nbsp;</h2>

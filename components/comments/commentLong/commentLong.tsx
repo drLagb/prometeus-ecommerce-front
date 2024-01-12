@@ -32,7 +32,8 @@ const CommentLong: React.FC<CommentLongProps> = ({
           src={getImage.URL}
           alt={`${getUser.nombre}'s avatar`}
           className="rounded-full w-14 h-14"
-        ></img>
+          loading="lazy"
+        />
       </div>
       <section className="h-full w-3/4">
         <h2 className="text-mainColor inline">{`${getUser.nombre}: `}&nbsp;</h2>
