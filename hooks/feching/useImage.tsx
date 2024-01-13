@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Image, Product, TypeImage, User } from "../all";
 
 interface Promp {
@@ -190,18 +190,25 @@ const imagenes: Array<Image> = [
  */
 export function useImage(promp: ExtraPromp) {
   const [getImage, setImage] = useState(promp);
-  const [getResult, setResult] = useState(imagenes[0]);
+  const [getResult, setResult] = useState<Image>(imagenes[find(imagenes, promp)]);
+  const first = useRef(false);
+  function find(lista:Array<Image>, buscar:ExtraPromp){
+    return lista.findIndex(
+      (elemento) =>{
+        if(buscar.usuarioId){
+          return elemento.usuario === buscar.usuarioId && buscar.tipo === elemento.tipo.id;
+        }
+        return elemento.producto === buscar.productoId && buscar.tipo === elemento.tipo.id;
+      }
+    )
+  }
   useEffect(() => {
     /*aca se haria el fecth*/
-    let indice = imagenes.findIndex(
-      (elemento) =>{
-        if(promp.usuarioId){
-          return elemento.usuario === promp.usuarioId && promp.tipo === elemento.tipo.id;
-        }
-        return elemento.producto === promp.productoId && promp.tipo === elemento.tipo.id;
-      }
-    );
-    setResult(imagenes[indice]);
+    if(!first.current){
+      first.current = true;
+      return;
+    }
+    setResult(imagenes[find(imagenes, promp)]);
   }, [getImage]);
   return {
     getImage: getResult,
@@ -218,7 +225,7 @@ export function useImage(promp: ExtraPromp) {
  */
 export function useImages(promp:Promp){
   const [getImages, setImages] = useState(promp);
-  const [getResult, setResult] = useState([imagenes[0]]);
+  const [getResult, setResult] = useState<Array<Image>>([]);
   useEffect(() => {
     /*aca se haria el fecth*/
     let imgs:Array<Image> = [];
