@@ -1,5 +1,4 @@
 "use client"
-import Link from "next/link";
 import { IoPaperPlaneOutline } from "react-icons/io5";
 import useIcon from "@/hooks/icon/useIcon";
 import { LinkProps } from "../icon.dto";
@@ -31,16 +30,16 @@ function IconAnimation({className, inicio}:any){
     
 }
 
-export default function ShareIcon({className, sonsClassNames, link, activo}:LinkProps){
+export default function ShareIcon({className, sonsClassNames, activo}:LinkProps){
     const EXTRACLASSNAME = (className)?className:"";
     const EXTRA1 = (sonsClassNames.length > 1)?sonsClassNames[0]:"";
     return(
-    <Link href={link} className={"" +
+    <div className={"" +
         "relative w-20 h-20 block" 
         + " " + EXTRACLASSNAME}
         aria-label="compartir"
         role="button">
         <IconAnimation className={EXTRA1} inicio={activo}/>
-    </Link>
+    </div>
     );
 }

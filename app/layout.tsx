@@ -2,6 +2,7 @@ import { config } from "dotenv";
 import type { Metadata } from "next";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import {  Header, Footer } from "@/components/navBar/NavBar";
 
 config();
 
@@ -21,9 +22,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body>
-          <header>
-            <h1>Prometeus</h1>
-          </header>
+          <Header />
           {modoDesarrollo
             ? [
                 children,
@@ -31,6 +30,7 @@ export default function RootLayout({
                 <script src="main.js"></script>,
               ]
             : children}
+          <Footer />
         </body>
       </html>
     </ClerkProvider>

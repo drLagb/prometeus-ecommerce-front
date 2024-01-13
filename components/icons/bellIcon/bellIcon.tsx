@@ -2,7 +2,10 @@
 import { FaBell } from "react-icons/fa";
 import useIcon from "@/hooks/icon/useIcon";
 import { LinkProps } from "../icon.dto";
-import Link from "next/link";
+
+interface BellProps extends LinkProps{
+    notificaciones:number
+}
 
 function IconAnimation({className, estado, activar}:any){
     function handleClick(e:Event){
@@ -23,16 +26,16 @@ function IconAnimation({className, estado, activar}:any){
     
 }
 
-export default function BellIcon({className, sonsClassNames, link, activo}:LinkProps){
+export default function BellIcon({className, sonsClassNames, activo, notificaciones}:BellProps){
     let inicio:boolean = activo;
     const {estado, activar} = useIcon(()=>{}, ()=>{}, inicio);
-    let numeroNotificacion = 9;
-    const AFTER = (!estado)?`after:content-['${numeroNotificacion}'] after:absolute after:w-10 after:h-6 after:bg-secondaryColor after:rounded-xl ` +
+    let numeroNotificacion = 20;
+    const AFTER = (!estado)?`after:content-['${notificaciones.toString()}'] after:absolute after:w-10 after:h-6 after:bg-secondaryColor after:rounded-xl ` +
     "after:bg-center after:top-10 after:left-10 after:right-0 after:bottom-0 ":"";
     const EXTRACLASSNAME = (className)?className:"";
     const EXTRA1 = (sonsClassNames.length > 1)?sonsClassNames[0]:"";
     return(
-    <Link href={link} className={"text-white text-center " + 
+    <div className={"text-white text-center " + 
         "relative w-20 h-20 block "  +
         "after:animate-in after:zoom-in duration-1000 " +
         AFTER +
@@ -40,6 +43,6 @@ export default function BellIcon({className, sonsClassNames, link, activo}:LinkP
         aria-label="notificaciones"
         role="button">
         <IconAnimation className={EXTRA1} estado={estado} activar={activar}/>
-    </Link>
+    </div>
     );
 }

@@ -1,5 +1,4 @@
 "use client"
-import Link from "next/link";
 import { FaUser } from "react-icons/fa";
 import useIcon from "@/hooks/icon/useIcon";
 import { LinkProps } from "../icon.dto";
@@ -14,11 +13,7 @@ function desactivo(){
 }
 
 function IconAnimation({className, inicio}:any){
-    const {estado, activar} = useIcon(activo, desactivo, inicio=inicio);
-    function handleClick(e:Event){
-        e.preventDefault();
-        activar();
-    }
+    const {estado} = useIcon(activo, desactivo, inicio=inicio);
     const color = (estado)?"text-secondaryColor ":"text-altBAckgroundColor ";
     return(
         <FaUser className={color + 
@@ -27,23 +22,22 @@ function IconAnimation({className, inicio}:any){
             "absolute top-0 bottom-0 right-0 left-0  m-auto z-0 " +
             "animate-in fade-in duration-700 "
             + " " + className}
-            onClick={handleClick} 
             title="cuenta"
             role="button"/>
         );
     
 }
 
-export default function UserIcon({className, sonsClassNames, link, activo}:LinkProps){
+export default function UserIcon({className, sonsClassNames, activo}:LinkProps){
     const EXTRACLASSNAME = (className)?className:"";
     const EXTRA1 = (sonsClassNames.length > 1)?sonsClassNames[0]:"";
     return(
-    <Link href={link} className={"" +
+    <div className={"" +
         "relative w-20 h-20 block" 
         + " " + EXTRACLASSNAME}
         aria-label="cuenta"
         role="button">
         <IconAnimation className={EXTRA1} inicio={activo}/>
-    </Link>
+    </div>
     );
 }

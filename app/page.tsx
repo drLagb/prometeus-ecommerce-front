@@ -2,8 +2,6 @@ import CommentList from "@/components/comments/containerComments/containerCommen
 
 export default function Home() {
   return (
-    <div role="main">
-      <CommentList />
-    </div>
+    <></>
   );
 }

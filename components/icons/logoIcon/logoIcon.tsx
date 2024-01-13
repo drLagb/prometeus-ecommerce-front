@@ -22,8 +22,7 @@ export default function LogoIcon({className, sonsClassNames}:Props){
     return(
     <div className={"" +
         "relative w-20 h-20 block" 
-        + " " + EXTRACLASSNAME}
-        aria-label="logo">
+        + " " + EXTRACLASSNAME}>
         <IconAnimation className={EXTRA1} />
     </div>
   );
